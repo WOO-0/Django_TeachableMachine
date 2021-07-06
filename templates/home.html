@@ -1,0 +1,95 @@
+{% extends 'menu.html' %}
+{% load static %}
+
+{% block header %}
+    <link href="{% static 'css/home.css'%}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<body>
+    <div id='route-container'>
+        <div id = "block-holder">
+            <div class = "block-item">
+                <h1> 운동 목록 </h1>
+                <div id = "projects-holder">
+                    <div id = 'card'>
+                        <div id = "main-project" role = "button" tabindex="0" class="project-wrap">
+                            <div id = 'project-images'>
+                                <slot name = 'images'>
+                                    <img slot="images" src="https://via.placeholder.com/100">
+                                    <img slot="images" src="https://via.placeholder.com/100">
+                                    <img slot="images" src="https://via.placeholder.com/100">
+                                </slot>
+                            </div>
+                            <div class="project-body">
+                                <div class='slot-container'>
+                                    <h3> 푸시업 </h3>
+                                    <slot name = 'description'>
+                                        <p slot="description" class="project-desc"><!---->파일 또는 웹캠에서 가져온 이미지를 기반으로 학습시키세요.<!----></p>
+                                    </slot>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id = "main-project" role = "button" tabindex="0" class="project-wrap">
+                            <div id = 'project-images'>
+                                <slot name = 'images'>
+                                    <img slot="images" src="https://via.placeholder.com/100" alt="샘플 이미지 - 강아지 인형 사진">
+                                    <img slot="images" src="https://via.placeholder.com/100" alt="샘플 이미지 - 강아지 인형 사진">
+                                    <img slot="images" src="https://via.placeholder.com/100" alt="샘플 이미지 - 강아지 인형 사진">
+                                </slot>
+                            </div>
+                            <div class="project-body">
+                                <div class='slot-container'>
+                                    <h3> 푸시업 </h3>
+                                    <slot name = 'description'>
+                                        <p slot="description" class="project-desc"><!---->파일 또는 웹캠에서 가져온 이미지를 기반으로 학습시키세요.<!----></p>
+                                    </slot>
+                                </div>
+                            </div>
+                        </div>
+                        <div id = "main-project" role = "button" tabindex="0" class="project-wrap">
+                            <div id = 'project-images'>
+                                <slot name = 'images'>
+                                    <img slot="images" src="https://via.placeholder.com/100" alt="샘플 이미지 - 강아지 인형 사진">
+                                    <img slot="images" src="https://via.placeholder.com/100" alt="샘플 이미지 - 강아지 인형 사진">
+                                    <img slot="images" src="https://via.placeholder.com/100" alt="샘플 이미지 - 강아지 인형 사진">
+                                </slot>
+                            </div>
+                            <div class="project-body">
+                                <div class='slot-container'>
+                                    <h3> 푸시업 </h3>
+                                    <slot name = 'description'>
+                                        <p slot="description" class="project-desc"><!---->파일 또는 웹캠에서 가져온 이미지를 기반으로 학습시키세요.<!----></p>
+                                    </slot>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id = "main-project" role = "button" tabindex="0" class="project-wrap">
+                            <div id = 'project-images'>
+                                <slot name = 'images'>
+                                    <img slot="images" src="https://via.placeholder.com/100" alt="샘플 이미지 - 강아지 인형 사진">
+                                    <img slot="images" src="https://via.placeholder.com/100" alt="샘플 이미지 - 강아지 인형 사진">
+                                    <img slot="images" src="https://via.placeholder.com/100" alt="샘플 이미지 - 강아지 인형 사진">
+                                </slot>
+                            </div>
+                            <div class="project-body">
+                                <div class='slot-container'>
+                                    <h3> 푸시업 </h3>
+                                    <slot name = 'description'>
+                                        <p slot="description" class="project-desc"><!---->파일 또는 웹캠에서 가져온 이미지를 기반으로 학습시키세요.<!----></p>
+                                    </slot>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+{% endblock %}

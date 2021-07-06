@@ -1,0 +1,76 @@
+{% extends 'menu.html' %}
+{% load static %}
+
+{% block header %}
+  <link href="{% static 'css/test.css'%}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div id="app">
+	<Calendar />
+</div>
+<template id="calendar-template">
+	  <div class="container">
+    <div class="single-day-container">
+      <div class="day-container">
+        <div class="day-info">
+          <div class="day-number">[[ selectedDay.number ]]</div>
+          <div class="day-name">[[ selectedDay.name ]]</div>
+        </div>
+        <div class="day-data">
+        </div>
+      </div>
+      <div class="event-container">
+        <ul class="event-list">
+          <li style='padding-left: 0' class="event-list-item" :class="{ 'active': dayEvent.isActive }" v-for="(dayEvent, index) in dayEvents" :key="`dayEvent-${index}`">
+            {% comment %} <div class="event-dates">
+              <span>[[ dayEvent.startDate | getTime ]]</span>
+              <span>[[ dayEvent.endDate | getTime ]]</span>
+            </div> {% endcomment %}
+            <div class="event-details">
+              [[ dayEvent.title ]]
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="calendar-container">
+      <div class="calendar">
+        <div class="header row flex-middle">
+          <div class="col col-start">
+            <div class="icon" @click="prevMonth">
+              <img src="{% static 'icons/chevron-left.svg'%}" alt="">
+            </div>
+          </div>
+          <div class="col col-center">
+						 <transition tag="div" :name="typeTransition">
+            	<div :key="month" class="month-name">[[ month ]]</div>
+						</transition>
+          </div>
+          <div class="col col-end">
+            <div class="icon" @click="nextMonth">
+              <img src="{% static 'icons/chevron-right.svg'%}" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="days row">
+          <div class="col col-center" v-for="(day, index) in dayNames" :key="`h-${index}`">
+            <div class="day-name">[[ day ]]</div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="row" v-for="(row, index) in rows" :key="`r-${index}`">
+            <div class="col cell" :class="[{'has-events': day.hasEvents}, day.type]" v-for="(day, index) in row.days" :key="`d-${index}`" @click="updateDate(day)">
+							 <transition-group tag="div" :name="typeTransition">
+              	<div :key="day.formattedDate" class="day-number">[[ day.formattedDate ]]</div>
+							</transition-group>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type = "module" src = "{% static 'js/test.js'%}"></script>
+{% endblock %}

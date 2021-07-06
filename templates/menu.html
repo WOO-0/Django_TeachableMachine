@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script src = "{% static 'js/menu.js' %}"></script>
+        <link href="{% static 'css/menu.css'%}" rel="stylesheet">
+        {% block header %}
+
+        {% endblock %}
+    </head>
+
+    <body>
+        <div id='menu-container'>
+            <div id = "menu-holder" role="button" class='collapsed'>
+                <span>
+                    <img style='margin-right: 10px' src="{%static 'icons/house.svg'%}" alt="" width="24" height="24">
+                </span>
+                <span id='app-name'> Weight Trainer </span>
+            </div>
+            <div id = 'main-menu'>
+                <ul>
+                    <li role="button" > 
+                        <span>
+                            <img src="{%static 'icons/card-list.svg'%}" alt="" width="24" height="24">
+                        </span>
+                        <span id='menu-body'>운동 목록</span>
+                    </li>
+    
+                    <li role="button" > 
+                        <span>
+                            <img src="{%static 'icons/emoji-sunglasses.svg'%}" alt="" width="24" height="24">
+                        </span>
+                        <span id='menu-body'>스트레칭 도우미</span>
+                    </li>
+    
+                    <li role="button" > 
+                        <span>
+                            <img src="{%static 'icons/stopwatch.svg'%}" alt="" width="24" height="24">
+                        </span>
+                        <span id='menu-body'>운동 기록</span>
+                    </li>
+    
+                    <li role="button" > 
+                        <span>
+                            <img src="{%static 'icons/graph-up.svg'%}" alt="" width="24" height="24">
+                        </span>
+                        <span id='menu-body'>운동 통계</span>
+                    </li>
+
+                    <li role="button" > 
+                        <span>
+                            <img src="{%static 'icons/door-open.svg'%}" alt="" width="24" height="24">
+                        </span>
+                        <span id='menu-body'>로그아웃</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        {% block content %}
+
+        {% endblock %}   
+    </body>
+</html>
