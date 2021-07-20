@@ -21,9 +21,10 @@
                         <div id = "main-project" role = "button" tabindex="0" class="project-wrap">
                             <div id = 'project-images'>
                                 <slot name = 'images'>
-                                    <img slot="images" src = "#" art="https://via.placeholder.com/100">
-                                    <img slot="images" src="https://via.placeholder.com/100">
-                                    <img slot="images" src="https://via.placeholder.com/100">
+                                    {% for img in training.images.all %}
+                                        
+                                        <img slot="images" src = "/{{ img.image }}" art="https://via.placeholder.com/100" width='100' height ='100'>
+                                    {% endfor %}
                                 </slot>
                             </div>
                             <div class="project-body">
