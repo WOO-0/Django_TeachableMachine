@@ -25,9 +25,10 @@
       <p class="fs-5 col-md-8">Quickly and easily get started with Bootstrap's compiled, production-ready files with
         this barebones example featuring some basic HTML and helpful links. Download all our examples to get started.
       </p>
-
-      <a href = "{% url 'kakao_login' %}">가나다라</a>
-
+      <div class = "mb-5">
+        <a href = "{% url 'kakao_login' %}" class = "btn btn-primary btn-lg px-4">카카오 계정으로 시작하기</a>
+      </div>
+      
 
       <hr class="col-3 col-md-2 mb-5">
 
@@ -59,47 +60,5 @@
       Created by the Bootstrap team &middot; &copy; 2021
     </footer>
   </div>
-
-  <script type="text/javascript">
-    Kakao.init('43d71630976a4fa9c641885c90cf1ce5');
-
-    Kakao.Auth.createLoginButton({
-      container: '#kakao-login-btn',
-      success: function (authObj) {
-        Kakao.API.request({
-          url: '/v2/user/me',
-          success: function (result) {
-            alert(result.properties.nickname)
-            $('#result').append(result);
-            id = result.id
-            connected_at = result.connected_at
-            kakao_account = result.kakao_account
-            $('#result').append(kakao_account);
-            resultdiv = "<h2>로그인 성공 !!"
-            resultdiv += '<h4>id: ' + id + '<h4>'
-            resultdiv += '<h4>connected_at: ' + connected_at + '<h4>'
-            nickname = "";
-            if (typeof kakao_account != 'undefined') {
-
-              nickname = result.properties.nickname;
-            }
-
-            resultdiv += '<h4>nickname: ' + nickname + ' 님 안녕하세요<h4>'
-            $('#result').append(resultdiv);
-
-          },
-          fail: function (error) {
-            alert(
-              'login success, but failed to request user information: ' +
-              JSON.stringify(error)
-            )
-          },
-        })
-      },
-      fail: function (err) {
-        alert('failed to login: ' + JSON.stringify(err))
-      },
-    })
-  </script>
 </body>
 {% endblock %}

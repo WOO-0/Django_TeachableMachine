@@ -23,7 +23,7 @@
             </div>
             <div id = 'main-menu'>
                 <ul>
-                    <li role="button" > 
+                    <li role="button" onClick="location.href='{% url 'home' %}'" > 
                         <span>
                             <img src="{%static 'icons/card-list.svg'%}" alt="" width="24" height="24">
                         </span>
@@ -37,7 +37,7 @@
                         <span id='menu-body'>스트레칭 도우미</span>
                     </li>
     
-                    <li role="button" > 
+                    <li role="button" onClick="location.href='{% url 'record' %}'"> 
                         <span>
                             <img src="{%static 'icons/stopwatch.svg'%}" alt="" width="24" height="24">
                         </span>
@@ -51,7 +51,7 @@
                         <span id='menu-body'>운동 통계</span>
                     </li>
 
-                    <li role="button" > 
+                    <li role="button" onClick="location.href='{% url 'kakao_logout' %}'"> 
                         <span>
                             <img src="{%static 'icons/door-open.svg'%}" alt="" width="24" height="24">
                         </span>

@@ -29,8 +29,8 @@ class HomeView(ListView):
     template_name = 'home.html'
     model = TrainingList
 
-class TestView(TemplateView):
-    template_name = 'test.html'
+class RecordView(TemplateView):
+    template_name = 'record.html'
 
 
 
@@ -40,6 +40,13 @@ def kakao_login(request):
     KAKAO_CALLBACK_URI = 'http://127.0.0.1:8000/kakao/callback/'
     return redirect(
         f"https://kauth.kakao.com/oauth/authorize?client_id={rest_api_key}&redirect_uri={KAKAO_CALLBACK_URI}&response_type=code"
+    )
+
+def kakao_logout(request):
+    REST_API_KEY = getattr(settings, 'KAKAO_REST_API_KEY')
+    KAKAO_CALLBACK_URI = 'http://127.0.0.1:8000/'
+    return redirect(
+        f"https://kauth.kakao.com/oauth/logout?client_id={REST_API_KEY}&logout_redirect_uri={KAKAO_CALLBACK_URI}"
     )
 
 def kakao_callback(request):
@@ -82,6 +89,8 @@ def kakao_callback(request):
         accept = requests.post(
             "http://127.0.0.1:8000/kakao/login/finish/", data=data)
         accept_status = accept.status_code
+        if accept_status == 300:
+            return redirect("http://127.0.0.1:8000/")
         if accept_status != 200:
             return JsonResponse({'err_msg': 'failed to signin'}, status=accept_status)
         accept_json = accept.json()
